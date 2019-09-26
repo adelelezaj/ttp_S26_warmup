@@ -110,13 +110,3 @@ WHERE rating = (SELECT rating
                        GROUP BY rating
                        ORDER BY rating desc
 					   LIMIT 1) AS highest_ratings);
-
-
-ELECT *
-FROM film
-WHERE rating = (SELECT rating 
-                FROM (SELECT rating, COUNT(film_id) as number_of_film
-                        FROM film
-                        GROUP BY rating
-                        ORDER BY number_of_film DESC
-                        LIMIT 1) as film_per_rating);
